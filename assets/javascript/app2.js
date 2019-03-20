@@ -1,8 +1,6 @@
-let questionTime = 30
-let resultTime = 10
+let remainingTime = 30
 let countDown
-let currQuestion = 0
-
+let currentQ = 0
 const quizQuestions = [
   {
     question: `Taylor was born in which year?`,
@@ -106,67 +104,66 @@ const quizQuestions = [
   },
 ]
 
+const displayQuestions = () => {
+  for (i=0; i <  questions.length; i++) {
+    
+  }
+}
 
-const startTriviaTimer = () => {
+const startTimer = () => {
   countDown = setInterval(function () {
     triviaTimer()
   }, 1000)
 }
 
 const triviaTimer = () => {
-  document.querySelector(`.timer`).innerHTML = `Time Remaining: ${questionTime}`;
-  questionTime--;
-  if (questionTime <= 0) {
+  document.querySelector(`.timer`).innerHTML = `Time Remaining: ${remainingTime}`;
+  remainingTime--;
+  if (remainingTime <= 0) {
     clearInterval(countDown)
-    questionTime = 30
-    console.log(questionTime)
-    displayResult()
   }
 }
 
-const startResultTimer = () => {
-  countDown = setInterval(function () {
-    resultTimer()
-  }, 1000)
-}
+document.querySelector(`#start`).addEventListener(`click`, function(event) {
+  currentQ = 0
+  let Q1 = document.createElement(`div`)
+  Q1.innerHTML = quizQuestions[0].question
+  document.querySelector(`.questions`).append(Q1)
+})
 
-const resultTimer = () => {
-  resultTime--;
-  if (resultTime <= 0) {
-    clearInterval(countDown)
-    resultTime = 10
-    console.log(resultTime)
-  }
-}
-
-const displayQuestion = () => {
-  startTriviaTimer()
-  document.querySelector(`.timer`).style.display = `show`
-  document.querySelector(`#start`).style.display = `none`
-  document.querySelector(`.header`).innerHTML = `${quizQuestions[currQuestion].question}`
-  document.querySelector(`#q1`).innerHTML = `${quizQuestions[currQuestion].answers.a}`
-  document.querySelector(`#q2`).innerHTML = `${quizQuestions[currQuestion].answers.b}`
-  document.querySelector(`#q3`).innerHTML = `${quizQuestions[currQuestion].answers.c}`
-  document.querySelector(`#q4`).innerHTML = `${quizQuestions[currQuestion].answers.d}`
-}
-
-const checkAnswer = () => {
-  document.addEventListener()
-}
-
-const displayResult = () => {
-  resultTimer()
-  document.querySelector(`.timer`).style.display = `none`
-  document.querySelector('.quiz-section').innerHTML = ``
-  const resultsSection = document.createElement(div)
-  document.querySelector(`.results`).innerHTML = `Time's up! The correct answer was: ${quizQuestions[currQuestion].correctAnswer}`
-  currQuestion++
-  displayQuestion()
-}
-
-document.querySelector(`#start`).addEventListener(`click`, displayQuestion)
-
-
-
-
-
+// const quest1 = () => {
+//   startTriviaTimer()
+//   document.querySelector(`.timer`).style.display = `show`
+//   document.querySelector(`#start`).style.display = `none`
+//   document.querySelector(`.questions`).innerHTML = `
+//   <div class="quiz-sections">
+//     <h1 id="question">Taylor was born in which year?</h2>
+//     <h2 class="answers">1994</h2>
+//     <h2 class = "answers" id="correct">1989</h2>
+//     <h2 class="answers">1990</h2>
+//     <h2 class="answers">1986</h2>
+//   </div>
+//   `
+//   document.querySelector(`.questions`).addEventListener(`click`, e => {
+//     console.log(event.target)
+//     clearInterval(countDown)
+//     document.querySelector(`.timer`).style.display = `none`
+//     if (event.target.id === "correct") {
+//       document.querySelector(`.questions`).innerHTML = `
+//     <div class="answer-sections">
+//     <h3>Yes, you were right!</h3>
+//     <h3>The correct answer was: 1989</h3>
+//     </div>
+//     `
+//     nextQuestion()
+//     } else {
+//       document.querySelector(`.questions`).innerHTML = `
+//     <div class="answer-sections">
+//     <h3>Wrong answer!</h3>
+//     <h3>The correct answer was: 1989</h3>
+//     </div>
+//     `
+//     nextQuestion()
+//     }
+//   })
+// }

@@ -1,0 +1,87 @@
+body {
+  width: 960px;
+  background: url(../images/background.png);
+  background-size: cover;
+  background-repeat: no-repeat;
+}
+
+@font-face {
+  font-family: myFirstFont;
+  src: url(../FromWhereYouAre.ttf)
+}
+
+.container {
+  width: 900px;
+  background: white;
+  margin: auto;
+  margin-top: 150px;
+  overflow: auto;
+}
+
+#title {
+  text-align: center;
+  font-size: 60px;
+  padding: 60px;
+  font-family: myFirstFont;
+}
+
+#start {
+  width: 200px;
+  height: 100px;
+  margin-left: auto;
+  margin-right: auto;
+  display: block;
+  margin-top: 50px;
+  margin-bottom: 50px;
+  font-size: 50px;
+}
+
+#start:hover {
+  border: 2px solid blue;
+}
+
+#start:active {
+  color: red;
+}
+
+.timer {
+  width: 100%;
+  font-size: 50px;
+  text-align: center;
+}
+
+.quiz-section {
+  width: 800px;
+  text-align: center;
+  font-size: 50px;
+  margin: auto;
+  margin-top: 50px;
+  padding-bottom: 20px;
+}
+
+.results {
+  width: 900px;
+  text-align: center;
+  font-size: 30px;
+  margin: auto;
+}
+
+#questions {
+  margin-bottom: 20px;
+}
+
+.choices {
+  width: 200px;
+  text-align: center;
+  margin: auto;
+}
+
+.choices:hover {
+  color: blue;
+}
+
+h3 {
+  width: 400px;
+  text-align: center;
+  margin: auto;
+}
