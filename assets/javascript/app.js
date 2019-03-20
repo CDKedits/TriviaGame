@@ -1,5 +1,5 @@
-let questionTime = 5
-let resultTime = 5
+let questionTime = 20
+let resultTime = 8
 let countDown
 let currQuestion = 0
 
