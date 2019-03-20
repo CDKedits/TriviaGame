@@ -1,5 +1,5 @@
 let questionTime = 20
-let resultTime = 8
+let resultTime = 5
 let countDown
 let currQuestion = 0
 
@@ -141,7 +141,7 @@ const resultTimer = () => {
   resultTime--;
   if (resultTime <= 0) {
     clearInterval(countDown)
-    resultTime = 10
+    resultTime = 5
     document.querySelector(`.quiz-section`).style.display = `block`
     displayQuestion()
     document.querySelector(`.results`).style.display = `none`
