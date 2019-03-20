@@ -187,21 +187,6 @@ document.addEventListener(`click`, function (event) {
     }
   })
 
-
-
-
-
-
-// const displayResult = () => {
-//   resultTimer()
-//   document.querySelector(`.timer`).style.display = `none`
-//   document.querySelector('.quiz-section').innerHTML = ``
-//   const resultsSection = document.createElement(div)
-//   document.querySelector(`.results`).innerHTML = `Time's up! The correct answer was: ${quizQuestions[currQuestion].correctAnswer}`
-//   currQuestion++
-//   displayQuestion()
-// }
-
 document.querySelector(`#start`).addEventListener(`click`, displayQuestion)
 
 
