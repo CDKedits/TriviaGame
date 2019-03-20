@@ -119,7 +119,7 @@ const triviaTimer = () => {
   questionTime--;
   if (questionTime <= 0) {
     clearInterval(countDown)
-    questionTime = 30
+    questionTime = 25
     document.querySelector(`.results`).style.display = `block`
     document.querySelector(`.results`).innerHTML = `
       Time's up! The correct answer is: ${quizQuestions[currQuestion].correctAnswer}
