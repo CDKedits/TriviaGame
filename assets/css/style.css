@@ -11,10 +11,11 @@ body {
 }
 
 .container {
-  width: 900px;
+  width: 950px;
   background: white;
   margin: auto;
   margin-top: 150px;
+  margin-left: 15px;
   overflow: auto;
 }
 
@@ -64,6 +65,8 @@ body {
   text-align: center;
   font-size: 30px;
   margin: auto;
+  margin-bottom: 50px;
+  display: none;
 }
 
 #questions {
@@ -78,6 +81,10 @@ body {
 
 .choices:hover {
   color: blue;
+}
+
+.choices {
+  margin-top: 20px;
 }
 
 h3 {

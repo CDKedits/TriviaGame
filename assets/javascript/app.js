@@ -42,7 +42,7 @@ const quizQuestions = [
       c: `Reputation`,
       d: `Speak Now`,
     },
-    correctAnswer: `a`
+    correctAnswer: `1989`
   },
   {
     question: `Which is NOT a real title for a Taylor Swift song?`,
@@ -52,7 +52,7 @@ const quizQuestions = [
       c: `Fearless`,
       d: `Wicked Games`,
     },
-    correctAnswer: `d`
+    correctAnswer: `Wicked Games`
   },
   {
     question: `The song "Getaway Car" is in which album?`,
@@ -62,7 +62,7 @@ const quizQuestions = [
       c: `Reputation`,
       d: `Fearless`,
     },
-    correctAnswer: `c`
+    correctAnswer: `Reputation`
   },
   {
     question: `In 2010, Taylor began selling her very own line of perfumes. What is the name of one perfume that she sold?`,
@@ -72,7 +72,7 @@ const quizQuestions = [
       c: `Princess`,
       d: `Graceful Red`,
     },
-    correctAnswer: `a`
+    correctAnswer: `Wonderstruck`
   },
   {
     question: `Which online streaming service is the "Reputation Stadium Tour" featured on?`,
@@ -82,7 +82,7 @@ const quizQuestions = [
       c: `Netflix`,
       d: `YouTube Premium`,
     },
-    correctAnswer: ``
+    correctAnswer: `Netflix`
   },
   {
     question: `Which celebrity is "King of My Heart" about?`,
@@ -92,7 +92,7 @@ const quizQuestions = [
       c: `Tom Hiddleston`,
       d: `Harry Styles`,
     },
-    correctAnswer: `a`
+    correctAnswer: `Joe Alwyn`
   },
   {
     question: `The following are songs that Taylor has written for movies EXCEPT`,
@@ -102,7 +102,7 @@ const quizQuestions = [
       c: `Sweeter Than Fiction`,
       d: `Getaway Car`,
     },
-    correctAnswer: `d`
+    correctAnswer: `Getaway Car`
   },
 ]
 
@@ -119,7 +119,7 @@ const triviaTimer = () => {
   questionTime--;
   if (questionTime <= 0) {
     clearInterval(countDown)
-    questionTime = 25
+    questionTime = 20
     document.querySelector(`.results`).style.display = `block`
     document.querySelector(`.results`).innerHTML = `
       Time's up! The correct answer is: ${quizQuestions[currQuestion].correctAnswer}
@@ -170,7 +170,7 @@ document.addEventListener(`click`, function (event) {
       document.querySelector(`.quiz-section`).style.display = `none`
       document.querySelector(`.timer`).style.display = `none`
       clearInterval(countDown)
-      questionTime = 30
+      questionTime = 20
       currQuestion++
       startResultTimer()
     } else {
@@ -181,7 +181,7 @@ document.addEventListener(`click`, function (event) {
       document.querySelector(`.quiz-section`).style.display = `none`
       document.querySelector(`.timer`).style.display = `none`
       clearInterval(countDown)
-      questionTime = 30
+      questionTime = 20
       currQuestion++
       startResultTimer()
     }
