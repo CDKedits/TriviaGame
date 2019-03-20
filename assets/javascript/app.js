@@ -106,7 +106,6 @@ const quizQuestions = [
   },
 ]
 
-
 const startTriviaTimer = () => {
   document.querySelector(`.timer`).innerHTML = `Time Remaining: ${questionTime}`
   countDown = setInterval(function () {
@@ -184,7 +183,7 @@ document.addEventListener(`click`, function (event) {
       currQuestion++
       startResultTimer()
     }
-  })
+})
 
 document.querySelector(`#start`).addEventListener(`click`, displayQuestion)
 

@@ -92,3 +92,8 @@ h3 {
   text-align: center;
   margin: auto;
 }
+
+.gif {
+  display: block;
+  margin: auto;
+}

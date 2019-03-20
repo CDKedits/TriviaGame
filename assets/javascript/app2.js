@@ -167,3 +167,11 @@ document.querySelector(`#start`).addEventListener(`click`, function(event) {
 //     }
 //   })
 // }
+
+if (currQuestion > quizQuestions.length) {
+  document.querySelector(`.timer`).style.display = `none`
+  document.querySelector(`.results`).style.display = `none`
+  document.querySelector(`.quiz-section`).innerHTML = `Thanks for playing my Taylor Swift trivia game!!
+      <img class="gif" src="./assets/images/taylor.gif" alt="taylor">
+      `
+}
