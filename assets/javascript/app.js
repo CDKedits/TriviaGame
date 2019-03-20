@@ -160,7 +160,6 @@ const displayQuestion = () => {
 }
 
 document.addEventListener(`click`, function (event) {
-  console.log(`click event listener is working`)
   if (event.target.className === `choices`)
     if (event.target.innerHTML === quizQuestions[currQuestion].correctAnswer) {
       document.querySelector(`.results`).style.display = `block`
