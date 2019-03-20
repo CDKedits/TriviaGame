@@ -52,7 +52,7 @@ body {
 }
 
 .quiz-section {
-  width: 800px;
+  width: 900px;
   text-align: center;
   font-size: 50px;
   margin: auto;
@@ -74,7 +74,7 @@ body {
 }
 
 .choices {
-  width: 200px;
+  width: 800px;
   text-align: center;
   margin: auto;
 }
