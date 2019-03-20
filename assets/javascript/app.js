@@ -1,5 +1,5 @@
-let questionTime = 30
-let resultTime = 10
+let questionTime = 5
+let resultTime = 5
 let countDown
 let currQuestion = 0
 
@@ -12,7 +12,7 @@ const quizQuestions = [
       c: `1990`,
       d: `1986`,
     },
-    correctAnswer: `b`
+    correctAnswer: `1989`
   },
   {
     question: `Which celebrity inspired Taylor to write her song, "All Too Well"?`,
@@ -22,7 +22,7 @@ const quizQuestions = [
       c: `Jake Gyllenhaal`,
       d: `Calvin Harris`,
     },
-    correctAnswer: `c`
+    correctAnswer: `Jake Gyllenhaal`
   },
   {
     question: `Complete the following lyrics: "You got that James Dean daydream look in your eye, and I've got that ____ lip classic thing that you like"`,
@@ -32,7 +32,7 @@ const quizQuestions = [
       c: `pink`,
       d: `black`,
     },
-    correctAnswer: `b`
+    correctAnswer: `red`
   },
   {
     question: `Which of these was Taylor's first pop album?`,
@@ -108,6 +108,7 @@ const quizQuestions = [
 
 
 const startTriviaTimer = () => {
+  document.querySelector(`.timer`).innerHTML = `Time Remaining: ${questionTime}`
   countDown = setInterval(function () {
     triviaTimer()
   }, 1000)
@@ -119,8 +120,14 @@ const triviaTimer = () => {
   if (questionTime <= 0) {
     clearInterval(countDown)
     questionTime = 30
-    console.log(questionTime)
-    displayResult()
+    document.querySelector(`.results`).style.display = `block`
+    document.querySelector(`.results`).innerHTML = `
+      Time's up! The correct answer is: ${quizQuestions[currQuestion].correctAnswer}
+      `
+    document.querySelector(`.timer`).style.display = `none`
+    document.querySelector(`.quiz-section`).style.display = `none`
+    currQuestion++
+    startResultTimer()
   }
 }
 
@@ -135,13 +142,15 @@ const resultTimer = () => {
   if (resultTime <= 0) {
     clearInterval(countDown)
     resultTime = 10
-    console.log(resultTime)
+    document.querySelector(`.quiz-section`).style.display = `block`
+    displayQuestion()
+    document.querySelector(`.results`).style.display = `none`
   }
 }
 
 const displayQuestion = () => {
   startTriviaTimer()
-  document.querySelector(`.timer`).style.display = `show`
+  document.querySelector(`.timer`).style.display = `block`
   document.querySelector(`#start`).style.display = `none`
   document.querySelector(`.header`).innerHTML = `${quizQuestions[currQuestion].question}`
   document.querySelector(`#q1`).innerHTML = `${quizQuestions[currQuestion].answers.a}`
@@ -150,19 +159,48 @@ const displayQuestion = () => {
   document.querySelector(`#q4`).innerHTML = `${quizQuestions[currQuestion].answers.d}`
 }
 
-const checkAnswer = () => {
-  document.addEventListener()
-}
+document.addEventListener(`click`, function (event) {
+  console.log(`click event listener is working`)
+  if (event.target.className === `choices`)
+    if (event.target.innerHTML === quizQuestions[currQuestion].correctAnswer) {
+      document.querySelector(`.results`).style.display = `block`
+      document.querySelector(`.results`).innerHTML = `
+      You were right! The correct answer is: ${quizQuestions[currQuestion].correctAnswer}
+      `
+      document.querySelector(`.quiz-section`).style.display = `none`
+      document.querySelector(`.timer`).style.display = `none`
+      clearInterval(countDown)
+      questionTime = 30
+      currQuestion++
+      startResultTimer()
+    } else {
+      document.querySelector(`.results`).style.display = `block`
+      document.querySelector(`.results`).innerHTML = `
+      Wrong! The correct answer is: ${quizQuestions[currQuestion].correctAnswer}
+      `
+      document.querySelector(`.quiz-section`).style.display = `none`
+      document.querySelector(`.timer`).style.display = `none`
+      clearInterval(countDown)
+      questionTime = 30
+      currQuestion++
+      startResultTimer()
+    }
+  })
 
-const displayResult = () => {
-  resultTimer()
-  document.querySelector(`.timer`).style.display = `none`
-  document.querySelector('.quiz-section').innerHTML = ``
-  const resultsSection = document.createElement(div)
-  document.querySelector(`.results`).innerHTML = `Time's up! The correct answer was: ${quizQuestions[currQuestion].correctAnswer}`
-  currQuestion++
-  displayQuestion()
-}
+
+
+
+
+
+// const displayResult = () => {
+//   resultTimer()
+//   document.querySelector(`.timer`).style.display = `none`
+//   document.querySelector('.quiz-section').innerHTML = ``
+//   const resultsSection = document.createElement(div)
+//   document.querySelector(`.results`).innerHTML = `Time's up! The correct answer was: ${quizQuestions[currQuestion].correctAnswer}`
+//   currQuestion++
+//   displayQuestion()
+// }
 
 document.querySelector(`#start`).addEventListener(`click`, displayQuestion)
 
