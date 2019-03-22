@@ -107,7 +107,6 @@ const quizQuestions = [
 ]
 
 const startTriviaTimer = () => {
-  document.querySelector(`.timer`).innerHTML = `Time Remaining: ${questionTime}`
   countDown = setInterval(function () {
     triviaTimer()
   }, 1000)
@@ -138,6 +137,7 @@ const startResultTimer = () => {
 
 const resultTimer = () => {
   resultTime--;
+
   if (resultTime <= 0) {
     clearInterval(countDown)
     resultTime = 5
@@ -149,6 +149,7 @@ const resultTimer = () => {
 
 const displayQuestion = () => {
   startTriviaTimer()
+  document.querySelector(`.timer`).innerHTML = `Time Remaining: ${questionTime}`
   document.querySelector(`.timer`).style.display = `block`
   document.querySelector(`#start`).style.display = `none`
   document.querySelector(`.header`).innerHTML = `${quizQuestions[currQuestion].question}`
@@ -159,30 +160,38 @@ const displayQuestion = () => {
 }
 
 document.addEventListener(`click`, function (event) {
-  if (event.target.className === `choices`)
-    if (event.target.innerHTML === quizQuestions[currQuestion].correctAnswer) {
-      document.querySelector(`.results`).style.display = `block`
-      document.querySelector(`.results`).innerHTML = `
+  if (currQuestion < quizQuestions.length) {
+    if (event.target.className === `choices`)
+      if (event.target.innerHTML === quizQuestions[currQuestion].correctAnswer) {
+        document.querySelector(`.results`).style.display = `block`
+        document.querySelector(`.results`).innerHTML = `
       You were right! The correct answer is: ${quizQuestions[currQuestion].correctAnswer}
       `
-      document.querySelector(`.quiz-section`).style.display = `none`
-      document.querySelector(`.timer`).style.display = `none`
-      clearInterval(countDown)
-      questionTime = 20
-      currQuestion++
-      startResultTimer()
-    } else {
-      document.querySelector(`.results`).style.display = `block`
-      document.querySelector(`.results`).innerHTML = `
+        document.querySelector(`.quiz-section`).style.display = `none`
+        document.querySelector(`.timer`).style.display = `none`
+        clearInterval(countDown)
+        questionTime = 20
+        currQuestion++
+        startResultTimer()
+      } else {
+        document.querySelector(`.results`).style.display = `block`
+        document.querySelector(`.results`).innerHTML = `
       Wrong! The correct answer is: ${quizQuestions[currQuestion].correctAnswer}
       `
-      document.querySelector(`.quiz-section`).style.display = `none`
-      document.querySelector(`.timer`).style.display = `none`
-      clearInterval(countDown)
-      questionTime = 20
-      currQuestion++
-      startResultTimer()
-    }
+        document.querySelector(`.quiz-section`).style.display = `none`
+        document.querySelector(`.timer`).style.display = `none`
+        clearInterval(countDown)
+        questionTime = 20
+        currQuestion++
+        startResultTimer()
+      }
+  } else {
+    document.querySelector(`.timer`).style.display = `none`
+    document.querySelector(`.results`).style.display = `none`
+    document.querySelector(`.quiz-section`).innerHTML = `Thanks for playing my Taylor Swift trivia game!!
+      <img class="gif" src="./assets/images/taylor.gif" alt="taylor">
+      `
+  }
 })
 
 document.querySelector(`#start`).addEventListener(`click`, displayQuestion)
